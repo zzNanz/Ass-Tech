@@ -1,0 +1,17 @@
+# Dependências do Node (Back-end)
+/backend/node_modules
+
+# Dependências do Node (Front-end, se houver)
+/frontend/node_modules
+
+# Logs e arquivos de depuração (gerados pelo npm/yarn)
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variáveis de Ambiente Secretas
+.env
+
+# Banco de Dados SQLite
+# Ignora o arquivo do banco de dados, pois contém dados e não código
+/backend/database/*.db
