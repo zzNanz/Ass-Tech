@@ -1,8 +1,17 @@
 const express = require('express');
 const criarTabelas = require('./config/initDataBase')
 
+const authRoutes = require('./routes/auth.route');
+const clientRoutes = require('./routes/clients.route');
+const warrantiesRoutes = require('./routes/warranties.route');
+
 const app = express();
 app.use(express.json());
+
+//Carregando as rotas
+app.use('/auth', authRoutes);
+app.use('/warranties', warrantiesRoutes);
+app.use('/clients', clientRoutes);
 
 //Carregando
 criarTabelas()

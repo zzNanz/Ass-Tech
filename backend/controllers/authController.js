@@ -7,6 +7,19 @@ module.exports = {
   * @param {Object} req - Objeto de requisição do Express
   * @param {Object} res - Objeto de resposta do Express
   */
+  getter(req, res){
+    const sql = "SELECT id, username FROM users ORDER BY username ASC";
+
+    db.all(sql, [], (err, rows) => {
+      if (err) {
+          console.error("Erro ao listar usuários:", err.message);
+          return res.status(500).json({ success: false, message: 'Erro interno ao buscar lista de usuários.' });
+      }
+
+        return res.json(rows);
+      });
+  },
+
  register(req, res){
     const { username, password } = req.body;
 
