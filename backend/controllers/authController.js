@@ -1,4 +1,8 @@
+require('dotenv').config()
 const db = require('../config/database')
+const jwt = require('jsonwebtoken')
+
+const SECRET = process.env.SECRET_KEY;
 
 module.exports = {
   
@@ -70,12 +74,20 @@ module.exports = {
       }
 
       if(row){
-        return res.json({ 
+        const payload = {
+          id: row.id,
+          username: row.username
+        };
+        
+        const token = jwt.sign(payload, SECRET, {expiresIn: '1h'});
+        
+        return res.json({
           success: true, 
-          message: 'Login bem-sucedido!', 
-          user: row.username,
-          userId: row.id
+          message: 'Login realizado', 
+          token: token, 
+          user: row.username
         });
+        
       } else {
         return res.status(401).json({ success: false, message: 'Credenciais inválidas.' });
       }

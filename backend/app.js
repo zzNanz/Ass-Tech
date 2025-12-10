@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const criarTabelas = require('./config/initDataBase')
 
 const authRoutes = require('./routes/auth.route');
@@ -7,6 +8,7 @@ const warrantiesRoutes = require('./routes/warranties.route');
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 //Carregando as rotas
 app.use('/auth', authRoutes);

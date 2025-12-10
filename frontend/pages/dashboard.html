@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Gestão de Garantias</title>
+    <link rel="stylesheet" href="../css/style.css\"> 
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Gestão de Garantias</h1>
+            <p id="userDisplay"></p>
+            <button id="logoutButton" class="logout-btn">Sair</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="addWarrantySection">
+            <h2>Adicionar Nova Garantia</h2>
+            <form id="addWarrantyForm">
+                <h3>Dados do Cliente (Buscar/Criar)</h3>
+                <div class="form-group">
+                    <label for="clientName">Nome Completo:</label>
+                    <input type="text" id="clientName" name="clientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientDocument">Documento (CPF/CNPJ):</label>
+                    <input type="text" id="clientDocument" name="clientDocument" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientContact">Contato (Telefone/Email):</label>
+                    <input type="text" id="clientContact" name="clientContact">
+                </div>
+
+                <h3>Dados do Produto</h3>
+                <div class="form-group">
+                    <label for="productName">Produto:</label>
+                    <input type="text" id="productName" name="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="serialNumber">Nº de Série:</label>
+                    <input type="text" id="serialNumber" name="serialNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="purchaseDate">Data da Compra:</label>
+                    <input type="date" id="purchaseDate" name="purchaseDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="warrantyEndDate">Vencimento da Garantia:</label>
+                    <input type="date" id="warrantyEndDate" name="warrantyEndDate" required>
+                </div>
+                
+                <p id="formMessage" class="error-message"></p>
+                <button type="submit">Cadastrar Garantia</button>
+            </form>
+        </section>
+
+        <section id="warrantyListSection">
+            <h2>Lista de Garantias</h2>
+            <table id="warrantyTable">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Produto</th>
+                        <th>Nº de Série</th>
+                        <th>Vencimento</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
