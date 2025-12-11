@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const criarTabelas = require('./config/initDataBase')
 
+const authMiddleware = require('./middleware/authMiddleware');
+const clientController = require('./controllers/clientController');
+
 const authRoutes = require('./routes/auth.route');
 const clientRoutes = require('./routes/clients.route');
 const warrantiesRoutes = require('./routes/warranties.route');
@@ -13,7 +16,8 @@ app.use(cors());
 //Carregando as rotas
 app.use('/auth', authRoutes);
 app.use('/warranties', warrantiesRoutes);
-app.use('/clients', clientRoutes);
+app.get('/clients', authMiddleware, clientController.listClients);
+
 
 //Carregando
 criarTabelas()

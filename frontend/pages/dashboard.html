@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Gestão de Garantias</title>
-    <link rel="stylesheet" href="../css/style.css\"> 
+    <link rel="stylesheet" href="../css/dashboard.css"> 
 </head>
 <body>
     <header>
         <div class="header-content">
             <h1>Gestão de Garantias</h1>
-            <p id="userDisplay"></p>
-            <button id="logoutButton" class="logout-btn">Sair</button>
+            <div style="display: flex; align-items: center;">
+                <p id="userDisplay"></p>
+                <button id="logoutButton" class="logout-btn">Sair</button>
+            </div>
         </div>
     </header>
 
@@ -19,36 +21,41 @@
         <section id="addWarrantySection">
             <h2>Adicionar Nova Garantia</h2>
             <form id="addWarrantyForm">
-                <h3>Dados do Cliente (Buscar/Criar)</h3>
-                <div class="form-group">
-                    <label for="clientName">Nome Completo:</label>
-                    <input type="text" id="clientName" name="clientName" required>
-                </div>
-                <div class="form-group">
-                    <label for="clientDocument">Documento (CPF/CNPJ):</label>
-                    <input type="text" id="clientDocument" name="clientDocument" required>
-                </div>
-                <div class="form-group">
-                    <label for="clientContact">Contato (Telefone/Email):</label>
-                    <input type="text" id="clientContact" name="clientContact">
+                
+                <h3>Dados do Cliente</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="clientName">Nome Completo:</label>
+                        <input type="text" id="clientName" name="clientName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientDocument">Documento (CPF/CNPJ):</label>
+                        <input type="text" id="clientDocument" name="clientDocument" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientContact">Contato (Telefone/Email):</label>
+                        <input type="text" id="clientContact" name="clientContact">
+                    </div>
                 </div>
 
                 <h3>Dados do Produto</h3>
-                <div class="form-group">
-                    <label for="productName">Produto:</label>
-                    <input type="text" id="productName" name="productName" required>
-                </div>
-                <div class="form-group">
-                    <label for="serialNumber">Nº de Série:</label>
-                    <input type="text" id="serialNumber" name="serialNumber" required>
-                </div>
-                <div class="form-group">
-                    <label for="purchaseDate">Data da Compra:</label>
-                    <input type="date" id="purchaseDate" name="purchaseDate" required>
-                </div>
-                <div class="form-group">
-                    <label for="warrantyEndDate">Vencimento da Garantia:</label>
-                    <input type="date" id="warrantyEndDate" name="warrantyEndDate" required>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="productName">Produto:</label>
+                        <input type="text" id="productName" name="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="serialNumber">Nº de Série:</label>
+                        <input type="text" id="serialNumber" name="serialNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="creationDate">Data de Criação da Garantia:</label>
+                        <input type="date" id="creationDate" name="creationDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expirationDisplay">Data de Expiração (1 Ano):</label>
+                        <input type="text" id="expirationDisplay" readonly value="Aguardando data..." class="read-only-field">
+                    </div>
                 </div>
                 
                 <p id="formMessage" class="error-message"></p>
@@ -57,23 +64,74 @@
         </section>
 
         <section id="warrantyListSection">
-            <h2>Lista de Garantias</h2>
-            <table id="warrantyTable">
-                <thead>
-                    <tr>
-                        <th>Cliente</th>
-                        <th>Produto</th>
-                        <th>Nº de Série</th>
-                        <th>Vencimento</th>
-                        <th>Status</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    </tbody>
-            </table>
+            <h2>Lista de Garantias Cadastradas</h2>
+            <div class="table-responsive">
+                <table id="warrantyTable">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Nº Doc.</th>
+                            <th>Produto</th>
+                            <th>Nº de Série</th>
+                            <th>Vencimento</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
         </section>
+
+        <section id="clientListSection">
+            <h2>Clientes Cadastrados</h2>
+            <div class="table-responsive">
+                <table id="clientTable">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Documento</th>
+                            <th>Contato</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
     </div>
+    </div>
+
+    <section id="searchWarrantySection">
+            <h2>Buscar Garantias</h2>
+            <form id="searchForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="searchClientName">Nome do Cliente:</label>
+                        <input type="text" id="searchClientName" name="clientName" placeholder="Busca por nome...">
+                    </div>
+                    <div class="form-group">
+                        <label for="searchProductName">Produto:</label>
+                        <input type="text" id="searchProductName" name="productName" placeholder="Busca por produto...">
+                    </div>
+                    <div class="form-group">
+                        <label for="searchSerialNumber">Nº de Série:</label>
+                        <input type="text" id="searchSerialNumber" name="serialNumber" placeholder="Busca por série...">
+                    </div>
+                </div>
+                
+                <button type="submit" style="width: 25%; background-color: var(--secondary-color);">
+                    🔎 Buscar Garantias
+                </button>
+                <button type="button" id="resetSearchButton" style="width: 25%; margin-left: 10px; background-color: #6c757d;">
+                    🔄 Mostrar Todas
+                </button>
+            </form>
+        </section>
+
+        <section id="warrantyListSection">
 
     <script src="../js/dashboard.js"></script>
 </body>

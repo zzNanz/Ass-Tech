@@ -1,0 +1,195 @@
+/* frontend/css/styles.css - Estilos Refatorados */
+
+.expired-row {
+    background-color: #ffe0e0; /* Fundo vermelho claro para garantia expirada */
+}
+
+/* Você pode adicionar mais estilos para o texto, se quiser */
+.expired-row td:nth-child(6) { /* Coluna do Status */
+    font-weight: bold;
+    color: var(--danger-color);
+}
+
+#warrantyTable thead,
+#clientTable thead { /* <--- NOVO: Aplica o estilo de cabeçalho também para a tabela de clientes */
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --border-color: #dee2e6;
+}
+
+/* Base e Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    color: #343a40;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+/* Header (Barra de Navegação Superior) */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+#userDisplay {
+    margin: 0 15px;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.logout-btn {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+/* Seções e Formulários */
+section {
+    background-color: var(--card-background);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+}
+
+section h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Layout de Colunas para Formulário */
+#addWarrantyForm h3 {
+    margin-top: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Botões de Ação */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #1e7e34;
+}
+
+.delete-btn {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+/* Estilos para a tabela */
+#warrantyTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+#warrantyTable thead {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+#warrantyTable th,
+#warrantyTable td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid var(--border-color);
+}
+
+#warrantyTable tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Listras para melhor leitura */
+}
+
+/* Mensagens de Feedback */
+.error-message {
+    color: var(--danger-color);
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+.success-message {
+    color: var(--success-color);
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}

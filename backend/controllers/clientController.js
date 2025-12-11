@@ -1,6 +1,23 @@
 const db = require('../config/database');
 
 module.exports = {
+
+  listClients: (req, res) => {
+        // Seleciona todos os campos da tabela clients
+        const sql = "SELECT * FROM clients ORDER BY clientName ASC";
+        
+        // db.all() é usado para buscar múltiplas linhas
+        db.all(sql, [], (err, rows) => {
+            if (err) {
+                console.error("Erro ao listar clientes:", err.message);
+                return res.status(500).json({ success: false, message: 'Erro interno ao buscar lista de clientes.' });
+            }
+
+            // Retorna o array de clientes
+            return res.json(rows);
+        });
+  },
+
   /**
    * Metodo responsavel por encontrar ou criar um cliente
    * @param {Object} req 
